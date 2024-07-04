@@ -1,0 +1,25 @@
+1. Delete Ubuntu Partition from Disk Management
+2. Open Command Prompt (Run As Admin)
+3. Boot Config:
+	bcdedit /enum firmware
+4. Locate Ubuntu Identifier and Copy it
+	bcdedit /delete {identifier}
+	diskpart
+	list disk
+	list vol
+5. Locate Ubuntu Partition system files
+	select volume (0,1,2)
+	assign LETTER=X,Y,Z:
+	exit
+	z:
+	dir
+	cd efi
+	cd ubuntu
+	dir
+	type grub.cfg
+	cd ..
+6. from Z:\efi
+	rmdir /s ubuntu
+	y
+	dir
+7. Reboot device
